@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+  grafana:
+    image: grafana/grafana-enterprise:8.2.0
+    ports:
+      - 3000:3000    
+    hostname: grafana.local
+    networks:
+      - ci_network
+networks:
+  ci_network:
+    external: true       

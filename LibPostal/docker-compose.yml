@@ -1,0 +1,8 @@
+version:  '3.7'
+services:
+  lib-postal:
+      image: libpostal-rest    
+      build: .      
+      ports:
+        - 5080:8080
+      container_name: libpostal

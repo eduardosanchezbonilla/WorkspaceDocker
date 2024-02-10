@@ -1,0 +1,20 @@
+version:  '3.7'
+services:
+  datascience-notebook:
+      #image: jupyter/datascience-notebook # imagen generica
+      #image: madiva/spark_notebooks:1.0.0 # imagen madiva construida con el dockerfile del repo concreto      
+      image: madiva/spark_notebooks # imagen madiva construida con el dockerfile del repo concreto      
+      build: .    
+      environment: 
+        - JUPYTER_TOKEN=admin
+        - PYTHONUNBUFFERED=1
+        - AWS_SDK_LOAD_CONFIG=1
+        - AWS_PROFILE=madiva-dev
+        - AWS_REGION=eu-west-1
+        - ENVIRONMENT=dev
+      volumes:
+        - ./notebook:/home/jovyan/work
+        - ~/.aws:/home/jovyan/.aws/       
+      ports:
+        - 8888:8888
+      container_name: anaconda_jupyter

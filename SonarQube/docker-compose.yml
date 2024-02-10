@@ -1,0 +1,14 @@
+version: '3.3'
+services:
+  sonarqube:
+    image: sonarqube:10.3.0-community
+    restart: always
+    ports:       
+      - 9092:9092
+      - 9000:9000
+    hostname: sonar.local
+#    networks:
+#      - ci_network
+#networks:
+#  ci_network:
+#    external: true 

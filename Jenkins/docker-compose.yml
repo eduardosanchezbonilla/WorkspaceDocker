@@ -1,0 +1,20 @@
+version: '3.7'
+services:
+    jenkins:
+        image: jenkins/jenkins:lts
+        restart: "no"
+        privileged: true
+        user: root
+        ports:
+            - 8080:8080
+        hostname: jenkins.local
+        networks:
+            - ci_network
+        container_name: jenkins
+        volumes:
+            - ~/jenkins:/var/jenkins_home
+            - /var/run/docker.sock:/var/run/docker.sock
+            - /usr/local/bin/docker:/usr/local/bin/docker
+networks:
+  ci_network:
+    external: true            

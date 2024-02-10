@@ -1,0 +1,13 @@
+version: '3.3'
+services:
+  nexus:
+    image: sonatype/nexus3
+    restart: always
+    ports: 
+      - 8081:8081
+    hostname: nexus.local
+    networks:
+      - ci_network
+networks:
+  ci_network:
+    external: true       

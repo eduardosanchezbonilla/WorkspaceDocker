@@ -1,0 +1,18 @@
+version: '3.7'
+services:
+    keycloak:
+        image: quay.io/keycloak/keycloak:19.0.2
+        restart: unless-stopped        
+        ports:
+            - 8085:8080
+        container_name: keycloak
+        hostname: keycloak.local
+        environment:
+            KEYCLOAK_ADMIN: admin
+            KEYCLOAK_ADMIN_PASSWORD: admin            
+        command: start-dev
+        networks:
+            - ci_network
+networks:
+  ci_network:
+    external: true                         
